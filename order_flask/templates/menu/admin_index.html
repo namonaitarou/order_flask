@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <br>
+    <a href="{{ url_for('menu.admin_index')}}">登録したメニューを見る</a>
+    <h1>注文の品一覧（管理者用）</h1>
+        {% if menus == [] %}
+            <p>注文の品は登録されていません</p>
+        {% else %}
+        <ul>
+            {% for order in orders %}
+            <img src="{{ url_for('static', filename='img/' + order.food.img) }}" alt="画像">
+            <li>{{ order.food.food_name }}</li>
+            <li>{{ order.food.price }}円</li>
+            <br>
+            {% endfor %}
+        </ul>
+        {% endif %}
+{% endblock %}

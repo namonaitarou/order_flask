@@ -1,0 +1,8 @@
+python==3.10
+Flask==2.3.2
+WTForms==3.0.1
+Flask==1.1.1
+werkzeug
+SQLAlchemy==3.0.3
+Flask-Migrate==4.0.4
+Flask-Login==0.6.2

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>新しいメニューを作成</h1>
+    <form method="post" action="{{ url_for('menu_create')}}" enctype="multipart/form-data">
+        <label for="food_name">メニュー名</label>
+        <input type="text" name="food_name" id="food_name" required>
+        <br><br>
+        <label for="price">値段</label>
+        <input type="number" name="price" id="price" required>
+        <br><br>
+        <label for="img">画像</label>
+        <input type="file" name="img" id="img" accept="image/*" required>
+        <br><br>
+        <input type="submit" value="作成">
+    </form> 
+
+    <a href="{{ url_for('index')}}">戻る</a>
+    {% endblock %}
