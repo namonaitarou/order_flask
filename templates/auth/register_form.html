@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>サインアップ</h1>
+    {% from "_formhelpers.html" import render_field %}
+        <form method="POST" action="{{ url_for('auth.register') }}" novalidate>
+            {{ form.hidden_tag() }}
+            {{ render_field(form.grade) }}
+            {{ render_field(form.class_number) }}
+            {{ render_field(form.number) }}
+            {{ render_field(form.password) }}
+            <br>
+            {% for message in get_flashed_messages() %}
+                <div style="color:blue;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            
+            {{ form.submit }}
+        </form>
+
+    <p>すでにアカウントをお持ちの場合は
+        <a href="{{ url_for('auth.login') }}">こちら</a>
+        からログインしてください。
+    </p>
+{% endblock %}

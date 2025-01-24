@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>メニューを編集</h1>
+    <form method="post" action="{{ url_for('menu_update', food_id=edit_id) }}" enctype="multipart/form-data">
+        <label for="food_name">メニュー名</label>
+        <input type="text" name="food_name" id="food_name" value="{{ menu.food_name }}" required>
+        <br><br>
+        <label for="price">値段</label>
+        <input type="number" name="price" id="price" value="{{ menu.price }}" required>
+        <br><br>
+        <label for="img">画像</label>
+        <input type="file" name="img" id="img" accept="image/*" required>
+        <br><br>
+        <input type="submit" value="更新">
+    </form>
+
+    <a href="{{ url_for('index')}}">戻る</a>
+    {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <br>
+    <a href="{{ url_for('menu.index') }}">注文の品一覧（管理者用）に戻る</a>
+    <br>
+    <br>
+    <a href="{{ url_for('menu.menu_create') }}">新しいメニューを追加</a>
+    <h1>メニュー一覧</h1>
+    {% if menus == [] %}
+        <p>メニューは登録されていません</p>
+    {% else %}
+        <ul>
+            {% for menu in menus%}
+            <img src="{{ url_for('static', filename='img/' + menu.img) }}" alt="画像">
+            <li>{{ menu.food_name}}&nbsp;&nbsp;&nbsp;{{ menu.price }}円
+                &nbsp;&nbsp;&nbsp;<a href="{{ url_for('menu.menu_update', food_id=menu.food_id) }}">編集</a>
+                &nbsp;&nbsp;&nbsp;<a href="{{ url_for('menu.menu_delete', food_id=menu.food_id) }}">削除</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% for message in get_flashed_messages() %}
+        <div style="color:blue;">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

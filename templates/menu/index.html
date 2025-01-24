@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p><a href="{{ url_for('order.order') }}">自分の注文した品を確認</a></p>
+    <h1>メニュー一覧</h1>
+    {% if menus == [] %}
+        <p>メニューは登録されていません</p>
+    {% else %}
+    <ul>
+        {% for menu in menus%}
+        <form method="post" action="{{ url_for('menu.index') }}">
+            <input type="hidden"  name="food_id" value="{{ menu.food_id }}">
+            <input type="image" src="{{ url_for('static', filename='img/' + menu.img) }}" alt="Submit">
+        </form>
+        <li>{{ menu.food_name}}&nbsp;&nbsp;&nbsp;{{ menu.price }}円</li>
+        <br>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}

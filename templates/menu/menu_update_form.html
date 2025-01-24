@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>メニューを編集</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="{{ url_for('menu.menu_update', food_id=edit_id) }}" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.food_name) }}
+        {{ render_field(form.price) }}
+        {{ render_field(form.img) }}
+        {{ form.submit }}
+    </form>
+
+    <a href="{{ url_for('menu.admin_index') }}">戻る</a>
+{% endblock %}

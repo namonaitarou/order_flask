@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <h1>新しいメニューを追加</h1>
+    {% from "_formhelpers.html" import render_field %}
+    <form method="POST" action="{{ url_for('menu.menu_create')}}" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        {{ render_field(form.food_name) }}
+        {{ render_field(form.price) }}
+        {{ render_field(form.img) }}
+        {{ form.submit }}
+    </form>
+
+    <a href="{{ url_for('menu.admin_index') }}">戻る</a>
+{% endblock %}
